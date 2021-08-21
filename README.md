@@ -1,4 +1,4 @@
-<center>![SPELL](https://github.com/emanzione/SPELL/blob/master/logo.png)</center>
+![SPELL](https://github.com/emanzione/SPELL/blob/master/logo.png)
 
 # SPELL: The Spells Framework
 
@@ -166,6 +166,10 @@ public class DirectDamage : ISpellEffect
     }
 }
 ```
+
+## Tests
+
+Check the [Tests](https://github.com/emanzione/SPELL/tree/main/MHLab.Spells.Tests) folder to see more samples.
 
 ## License
 

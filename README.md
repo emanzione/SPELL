@@ -1,4 +1,4 @@
-![SPELL](https://github.com/emanzione/SPELL/blob/master/logo.png)
+![SPELL](https://github.com/emanzione/SPELL/blob/main/logo.png)
 
 # SPELL: The Spells Framework
 

@@ -174,6 +174,12 @@ public class DirectDamage : ISpellEffect
 
 Check the [Tests](https://github.com/emanzione/SPELL/tree/main/MHLab.Spells.Tests) folder to see more samples.
 
+## Roadmap
+
+- Considering the feedback from the beta testers
+- Completing the package for the Asset Store. It contains samples and ready-to-use components
+- Optimizing: prepare a load test, profile it, remove runtime allocations, etc
+
 ## License
 
 The core of this framework is distributed under the terms of MIT license. You can use it for free, but please: if you adopt it in a commercial project, consider mentioning me (and even buying the full package from the Asset Store! :) ).

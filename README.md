@@ -2,6 +2,9 @@
 
 # SPELL: The Spells Framework
 
+![Build](https://github.com/emanzione/SPELL/workflows/Build/badge.svg)
+[![Nuget](https://img.shields.io/nuget/v/MHLab.Spells)](https://www.nuget.org/packages/MHLab.Spells/)
+
 `SPELL` is a framework for describing, composing and managing your game's spells and abilities.
 
 - __*Component based*__. Costs, requirements, effects are all independent components: you can define and reuse them as you prefer

@@ -189,6 +189,12 @@ Check the [Tests](https://github.com/emanzione/SPELL/tree/main/MHLab.Spells.Test
 - Completing the package for the Asset Store. It contains samples and ready-to-use components
 - Optimizing: prepare a load test, profile it, remove runtime allocations, etc
 
+## Contributing
+
+Feel free to open PR or leaving feedback through the Issues. The framework is still in beta, we can shape it together!
+
+If you want to chat with the community, feel free to join our [Discord server](https://discord.gg/jpteW4yaUN).
+
 ## License
 
 The core of this framework is distributed under the terms of MIT license. You can use it for free, but please: if you adopt it in a commercial project, consider mentioning me (and even buying the full package from the Asset Store! :) ).

@@ -170,6 +170,15 @@ public class DirectDamage : ISpellEffect
 }
 ```
 
+## Casting the spell
+
+Defining your spell is useless if you cannot unleash it against your enemies! The framework offers a way to cast a spell:
+
+```csharp
+
+var castResult = _spellsContext.CasterSystem.Cast(myPlayer, myTargets, mySpellDefinition, out var spellInstance);
+```
+
 ## Tests
 
 Check the [Tests](https://github.com/emanzione/SPELL/tree/main/MHLab.Spells.Tests) folder to see more samples.

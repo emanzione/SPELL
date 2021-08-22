@@ -5,44 +5,61 @@ using MHLab.Spells.Requirements;
 
 namespace MHLab.Spells
 {
+    public class CasterSystemOptions
+    {
+        public bool CheckRequirements { get; set; } = true;
+        public bool ApplyCosts        { get; set; } = true;
+    }
+
     public class SpellCasterSystem
     {
+        public CasterSystemOptions Options { get; set; }
+
         private readonly SpellsContext _context;
 
         public SpellCasterSystem(SpellsContext context)
         {
             _context = context;
+
+            Options = new CasterSystemOptions();
         }
-        
-        public SpellCastResult Cast(ISpellCaster caster, IEnumerable<ISpellTarget> targets, SpellDefinition definition, out SpellInstance spellInstance)
+
+        public SpellCastResult Cast(ISpellCaster caster, IEnumerable<ISpellTarget> targets, SpellDefinition definition,
+                                    out SpellInstance spellInstance)
         {
-            var checkRequirementsResult = definition.CheckRequirements(caster, targets, _context);
-            if (checkRequirementsResult.Result == false)
+            if (Options.CheckRequirements)
             {
-                spellInstance = null;
-                return new SpellCastResult()
+                var checkRequirementsResult = definition.CheckRequirements(caster, targets, _context);
+                if (checkRequirementsResult.Result == false)
                 {
-                    State                  = SpellCastState.RequirementsNotMet,
-                    CheckRequirementResult = checkRequirementsResult
-                };
+                    spellInstance = null;
+                    return new SpellCastResult()
+                    {
+                        State                  = SpellCastState.RequirementsNotMet,
+                        CheckRequirementResult = checkRequirementsResult
+                    };
+                }
             }
-            
-            definition.ApplyCosts(caster, targets);
-            
+
+            if (Options.ApplyCosts)
+            {
+                definition.ApplyCosts(caster, targets);
+            }
+
             spellInstance = new SpellInstance(definition, caster, targets);
 
             var spellCastedData = _context.CastedData.EnsureSpellCastedData(caster);
-            
+
             CreateEffectInstances(spellInstance, spellCastedData);
-            
+
             spellCastedData.SpellInstances.Add(spellInstance);
 
             return new SpellCastResult()
             {
-                State                  = SpellCastState.Success,
+                State = SpellCastState.Success,
                 CheckRequirementResult = new CheckRequirementResult()
                 {
-                    Error = null,
+                    Error  = null,
                     Result = true
                 }
             };

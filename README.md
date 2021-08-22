@@ -9,7 +9,7 @@
 
 - __*Component based*__. Costs, requirements, effects are all independent components: you can define and reuse them as you prefer
 - __*Code first*__. Spells and components are defined as C# scripts: no need for external configuration files or different formats, the compiler will ensure the correctness of the spell definition
-- __*Engine agnostic*__. It's just raw C#, it does not depend on any particular game engine.
+- __*Engine agnostic*__. It's just raw C#, it does not depend on any particular game engine
 
 Its core is open source, so you can contribute and freely experiment with it.
 
@@ -177,6 +177,15 @@ Defining your spell is useless if you cannot unleash it against your enemies! Th
 ```csharp
 
 var castResult = _spellsContext.CasterSystem.Cast(myPlayer, myTargets, mySpellDefinition, out var spellInstance);
+```
+
+You can modify some options of the CasterSystem by accessing its Options property:
+
+```csharp
+// Regulates the requirements check. Useful for debugging or cheating. Default = true
+_spellsContext.CasterSystem.Options.CheckRequirements
+// Regulates the costs applying. Useful for debugging or cheating. Default = true
+_spellsContext.CasterSystem.Options.ApplyCosts
 ```
 
 ## Tests

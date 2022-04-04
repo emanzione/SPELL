@@ -24,7 +24,7 @@ namespace MHLab.Spells
             Options = new CasterSystemOptions();
         }
 
-        public SpellCastResult Cast(ISpellCaster caster, IEnumerable<ISpellTarget> targets, SpellDefinition definition,
+        public SpellCastResult Cast(ISpellCaster caster, IEnumerable<ISpellTarget> targets, Spell definition,
                                     out SpellInstance spellInstance)
         {
             if (Options.CheckRequirements)

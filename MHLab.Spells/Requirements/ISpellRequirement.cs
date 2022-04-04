@@ -5,6 +5,6 @@ namespace MHLab.Spells.Requirements
 {
     public interface ISpellRequirement
     {
-        CheckRequirementResult IsMet(ISpellCaster caster, IEnumerable<ISpellTarget> targets, SpellDefinition spellDefinition, SpellsContext context);
+        CheckRequirementResult IsMet(ISpellCaster caster, IEnumerable<ISpellTarget> targets, Spell spell, SpellsContext context);
     }
 }

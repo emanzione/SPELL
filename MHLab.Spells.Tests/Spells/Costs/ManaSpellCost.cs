@@ -13,7 +13,7 @@ namespace MHLab.Spells.Tests.Spells.Costs
             _requiredMana = requiredMana;
         }
         
-        public void ApplyCost(ISpellCaster caster, IEnumerable<ISpellTarget> targets, SpellDefinition spellDefinition)
+        public void ApplyCost(ISpellCaster caster, IEnumerable<ISpellTarget> targets, Spell spell)
         {
             var player = (MyPlayer)caster;
 

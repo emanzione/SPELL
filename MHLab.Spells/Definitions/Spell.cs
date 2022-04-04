@@ -5,9 +5,20 @@ using MHLab.Spells.Requirements;
 
 namespace MHLab.Spells.Definitions
 {
-    public abstract class SpellDefinition
+    public interface ISpellDefinition
     {
-        public float Cooldown { get; protected set; }
+        void SetMetadata(Spell spell);
+
+        void AddRequirements(SpellRequirementContainer container);
+
+        void AddCosts(SpellCostContainer container);
+
+        void AddEffects(SpellEffectContainer container);
+    }
+    
+    public class Spell
+    {
+        public float Cooldown { get; set; }
 
         internal SpellEffectContainer Effects => _effects;
         
@@ -15,30 +26,26 @@ namespace MHLab.Spells.Definitions
         private readonly SpellCostContainer        _costs;
         private readonly SpellEffectContainer      _effects;
 
-        protected SpellDefinition()
+        public readonly ISpellDefinition SpellDefinition;
+
+        public Spell(ISpellDefinition spellDefinition)
         {
             _requirements = new SpellRequirementContainer();
             _costs        = new SpellCostContainer();
             _effects      = new SpellEffectContainer();
+
+            SpellDefinition = spellDefinition;
             
             Initialize();
         }
 
         private void Initialize()
         {
-            SetMetadata();
-            AddRequirements(_requirements);
-            AddCosts(_costs);
-            AddEffects(_effects);
+            SpellDefinition.SetMetadata(this);
+            SpellDefinition.AddRequirements(_requirements);
+            SpellDefinition.AddCosts(_costs);
+            SpellDefinition.AddEffects(_effects);
         }
-
-        protected abstract void SetMetadata();
-
-        protected abstract void AddRequirements(SpellRequirementContainer container);
-
-        protected abstract void AddCosts(SpellCostContainer container);
-
-        protected abstract void AddEffects(SpellEffectContainer container);
 
         internal CheckRequirementResult CheckRequirements(ISpellCaster caster, IEnumerable<ISpellTarget> targets, SpellsContext context)
         {

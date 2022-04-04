@@ -36,7 +36,7 @@ namespace MHLab.Spells.Instances
             _instances.RemoveAt(index);
         }
 
-        public bool TryGetFirst<TDefinition>(TDefinition definition, out SpellInstance instance) where TDefinition : SpellDefinition
+        public bool TryGetFirst<TDefinition>(TDefinition definition, out SpellInstance instance) where TDefinition : Spell
         {
             var definitionType = typeof(TDefinition);
 
@@ -57,7 +57,7 @@ namespace MHLab.Spells.Instances
             return false;
         }
         
-        public bool TryGetFirst(SpellDefinition definition, out SpellInstance instance)
+        public bool TryGetFirst(Spell definition, out SpellInstance instance)
         {
             var definitionType = definition.GetType();
 

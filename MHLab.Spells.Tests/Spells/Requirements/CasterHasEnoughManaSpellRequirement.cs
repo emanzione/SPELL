@@ -16,7 +16,7 @@ namespace MHLab.Spells.Tests.Spells.Requirements
         }
 
         public CheckRequirementResult IsMet(ISpellCaster    caster,          IEnumerable<ISpellTarget> targets,
-                                            SpellDefinition spellDefinition, SpellsContext             context)
+                                            Spell spell, SpellsContext             context)
         {
             var player = (MyPlayer)caster;
 

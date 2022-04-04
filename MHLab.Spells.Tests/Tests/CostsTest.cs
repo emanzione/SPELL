@@ -3,10 +3,7 @@ using MHLab.Spells.Costs;
 using MHLab.Spells.Definitions;
 using MHLab.Spells.Effects;
 using MHLab.Spells.Requirements;
-using MHLab.Spells.Tests.Spells;
 using MHLab.Spells.Tests.Spells.Costs;
-using MHLab.Spells.Tests.Spells.Effects;
-using MHLab.Spells.Tests.Spells.Requirements;
 using NUnit.Framework;
 
 namespace MHLab.Spells.Tests.Tests
@@ -15,35 +12,35 @@ namespace MHLab.Spells.Tests.Tests
     {
         private class MySpellsContext : SpellsContext
         {
-            protected override void RegisterSpells(SpellDefinitionContainer container)
+            protected override void RegisterSpells(SpellContainer container)
             {
-                container.Add<SimpleSpellDefinition>();
+                container.Add<SimpleSpell>();
             }
         }
         
-        private class SimpleSpellDefinition : SpellDefinition
+        private class SimpleSpell : ISpellDefinition
         {
-            protected override void SetMetadata()
+            public void SetMetadata(Spell spell)
             {
             }
 
-            protected override void AddRequirements(SpellRequirementContainer container)
+            public void AddRequirements(SpellRequirementContainer container)
             {
             }
 
-            protected override void AddCosts(SpellCostContainer container)
+            public void AddCosts(SpellCostContainer container)
             {
                 container.Add(new ManaSpellCost(10));
             }
 
-            protected override void AddEffects(SpellEffectContainer container)
+            public void AddEffects(SpellEffectContainer container)
             {
             }
         }
         
         private MySpellsContext           _context;
         private IEnumerable<ISpellTarget> _targets;
-        private SpellDefinition           _spell;
+        private Spell           _spell;
 
         [SetUp]
         public void Setup()
@@ -53,7 +50,7 @@ namespace MHLab.Spells.Tests.Tests
             {
                 new MyTarget()
             };
-            _spell = _context.Definitions.Get<SimpleSpellDefinition>();
+            _spell = _context.Definitions.Get<SimpleSpell>();
         }
         
         [Test]

@@ -9,9 +9,9 @@ namespace MHLab.Spells.Tests.Spells.Requirements
     {
         private const string RequirementErrorCode = "SPELL_IS_IN_COOLDOWN";
         
-        public CheckRequirementResult IsMet(ISpellCaster caster, IEnumerable<ISpellTarget> targets, SpellDefinition spellDefinition, SpellsContext context)
+        public CheckRequirementResult IsMet(ISpellCaster caster, IEnumerable<ISpellTarget> targets, Spell spell, SpellsContext context)
         {
-            if (SpellCooldownHelper.IsInCooldown(context, caster, spellDefinition) == false)
+            if (SpellCooldownHelper.IsInCooldown(context, caster, spell) == false)
             {
                 return new CheckRequirementResult()
                 {

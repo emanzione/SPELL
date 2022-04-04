@@ -17,30 +17,30 @@ But soon a set of samples and ready-to-use components will be for sale on Unity 
 
 ## Create your first spell
 
-Creating a new Spell Definition is easy. You just need to extend `SpellDefinition`:
+Creating a new Spell is easy. You just need to implement `ISpellDefinition`:
 
 ```csharp
-public class MySpell : SpellDefinition
+public class MySpellDefinition : ISpellDefinition
 {
-    protected override void SetMetadata()
+    public void SetMetadata(Spell spell)
     {
         // Set metadata here: like Cooldown, etc.
     }
 
-    protected override void AddRequirements(SpellRequirementContainer container)
+    public void AddRequirements(SpellRequirementContainer container)
     {
         // Add requirements for the spell here, like enough mana, selected targets, etc.
         // If one of the requirements is not met, the spell cast fails.
         container.Add(new CasterHasEnoughMana(5));
     }
 
-    protected override void AddCosts(SpellCostContainer container)
+    public void AddCosts(SpellCostContainer container)
     {
         // Add costs for the spell here. Subtract mana from the caster, HP, gold, etc.
         container.Add(new ManaSpellCost(5));
     }
 
-    protected override void AddEffects(SpellEffectContainer container)
+    public void AddEffects(SpellEffectContainer container)
     {
         // Add the effects here. What happens when the spell is successfully casted? Dealing damage, buffing/debuffing the targets, etc.
         container.Add<DirectDamage>();
@@ -59,9 +59,9 @@ public class MySpellsContext : SpellsContext
 {
     protected override void RegisterSpells(SpellDefinitionContainer container)
     {
-        container.Add<MySpell>();
+        container.Add<MySpellDefinition>();
         // OR (if you need to pass parameters to the constructor):
-        container.Add(new MySpell(myDependency));
+        container.Add(new MySpellDefinition(myDependency));
     }
 }
 ```

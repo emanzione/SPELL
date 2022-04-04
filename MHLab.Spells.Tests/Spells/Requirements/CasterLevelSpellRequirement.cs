@@ -15,7 +15,7 @@ namespace MHLab.Spells.Tests.Spells.Requirements
             RequiredLevel = requiredLevel;
         }
 
-        public CheckRequirementResult IsMet(ISpellCaster  caster, IEnumerable<ISpellTarget> targets, SpellDefinition spellDefinition,
+        public CheckRequirementResult IsMet(ISpellCaster  caster, IEnumerable<ISpellTarget> targets, Spell spell,
                           SpellsContext context)
         {
             var player = (MyPlayer)caster;

@@ -7,7 +7,7 @@ namespace MHLab.Spells
 {
     public abstract class SpellsContext
     {
-        public readonly SpellDefinitionContainer Definitions;
+        public readonly SpellContainer Definitions;
         public readonly SpellCasterSystem        CasterSystem;
         public readonly SpellCastedDataContainer CastedData;
 
@@ -17,7 +17,7 @@ namespace MHLab.Spells
 
         protected SpellsContext()
         {
-            Definitions  = new SpellDefinitionContainer();
+            Definitions  = new SpellContainer();
             CasterSystem = new SpellCasterSystem(this);
             CastedData   = new SpellCastedDataContainer();
 
@@ -33,7 +33,10 @@ namespace MHLab.Spells
             RegisterSpells(Definitions);
         }
 
-        protected abstract void RegisterSpells(SpellDefinitionContainer container);
+        /// <summary>
+        /// Implement this method to register the spells for your context.
+        /// </summary>
+        protected abstract void RegisterSpells(SpellContainer container);
 
         public void Update(float deltaTime)
         {

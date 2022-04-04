@@ -52,16 +52,16 @@ You can use the constructor to inject dependencies, if needed.
 
 ## Create the context
 
-A `SpellsContext` is like the main container for your spells (and their runtime data). Just create your own by extending `SpellsContext`:
+A `SpellsContext` is like the main container for your spells (and their runtime data). Just create a new instance of `SpellsContext` or inherit from it:
 
 ```csharp
 public class MySpellsContext : SpellsContext
 {
-    protected override void RegisterSpells(SpellDefinitionContainer container)
+    public MySpellsContext() : base()
     {
-        container.Add<MySpellDefinition>();
+        Spells.Add<MySpellDefinition>();
         // OR (if you need to pass parameters to the constructor):
-        container.Add(new MySpellDefinition(myDependency));
+        Spells.Add(new MySpellDefinition(myDependency));
     }
 }
 ```

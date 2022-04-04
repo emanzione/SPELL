@@ -12,9 +12,9 @@ namespace MHLab.Spells.Tests.Tests
     {
         private class MySpellsContext : SpellsContext
         {
-            protected override void RegisterSpells(SpellContainer container)
+            public MySpellsContext() : base()
             {
-                container.Add<SimpleSpell>();
+                Spells.Add<SimpleSpell>();
             }
         }
         
@@ -51,7 +51,7 @@ namespace MHLab.Spells.Tests.Tests
             {
                 new MyTarget()
             };
-            _spell = _context.Definitions.Get<SimpleSpell>();
+            _spell = _context.Spells.Get<SimpleSpell>();
         }
         
         [Test]

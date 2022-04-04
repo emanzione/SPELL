@@ -12,12 +12,12 @@ namespace MHLab.Spells.Tests.Tests
     {
         private class MySpellsContext : SpellsContext
         {
-            protected override void RegisterSpells(SpellContainer container)
+            public MySpellsContext() : base()
             {
-                container.Add<SimpleSpell>();
+                Spells.Add<SimpleSpell>();
             }
         }
-        
+
         private class SimpleSpell : ISpellDefinition
         {
             public void SetMetadata(Spell spell)
@@ -37,10 +37,10 @@ namespace MHLab.Spells.Tests.Tests
                 container.Add(new BurnDamageSpellEffect(10, 1));
             }
         }
-        
+
         private MySpellsContext           _context;
         private IEnumerable<ISpellTarget> _targets;
-        private Spell           _spell;
+        private Spell                     _spell;
 
         [SetUp]
         public void Setup()
@@ -50,7 +50,7 @@ namespace MHLab.Spells.Tests.Tests
             {
                 new MyTarget() { Level = 3, HealthPoints = 50, Armor = 0 }
             };
-            _spell = _context.Definitions.Get<SimpleSpell>();
+            _spell = _context.Spells.Get<SimpleSpell>();
         }
 
         [Test]
@@ -96,7 +96,7 @@ namespace MHLab.Spells.Tests.Tests
             var castResult = _context.CasterSystem.Cast(caster, _targets, _spell, out _);
             Assert.AreEqual(SpellCastState.Success, castResult.State);
 
-            
+
             for (var i = 0; i < 20; i++)
                 _context.Update(1);
 

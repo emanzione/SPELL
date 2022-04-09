@@ -24,12 +24,12 @@ namespace MHLab.Spells
             Options = new CasterSystemOptions();
         }
 
-        public SpellCastResult Cast(ISpellCaster caster, IEnumerable<ISpellTarget> targets, Spell definition,
+        public SpellCastResult Cast(ISpellCaster caster, IEnumerable<ISpellTarget> targets, Spell spell,
                                     out SpellInstance spellInstance)
         {
             if (Options.CheckRequirements)
             {
-                var checkRequirementsResult = definition.CheckRequirements(caster, targets, _context);
+                var checkRequirementsResult = spell.CheckRequirements(caster, targets, _context);
                 if (checkRequirementsResult.Result == false)
                 {
                     spellInstance = null;
@@ -43,10 +43,10 @@ namespace MHLab.Spells
 
             if (Options.ApplyCosts)
             {
-                definition.ApplyCosts(caster, targets);
+                spell.ApplyCosts(caster, targets);
             }
 
-            spellInstance = new SpellInstance(definition, caster, targets);
+            spellInstance = new SpellInstance(spell, caster, targets);
 
             var spellCastedData = _context.CastedData.EnsureSpellCastedData(caster);
 

@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHLab.Spells", "MHLab.Spell
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHLab.Spells.Tests", "MHLab.Spells.Tests\MHLab.Spells.Tests.csproj", "{BCFAFB3C-9DA3-4709-9E29-324A424890D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHLab.Spells.Utilities", "MHLab.Spells.Utilities\MHLab.Spells.Utilities.csproj", "{368C6D48-51EB-4428-B74C-638C47A7B75E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{BCFAFB3C-9DA3-4709-9E29-324A424890D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCFAFB3C-9DA3-4709-9E29-324A424890D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCFAFB3C-9DA3-4709-9E29-324A424890D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{368C6D48-51EB-4428-B74C-638C47A7B75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{368C6D48-51EB-4428-B74C-638C47A7B75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{368C6D48-51EB-4428-B74C-638C47A7B75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{368C6D48-51EB-4428-B74C-638C47A7B75E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -5,17 +5,6 @@ using MHLab.Spells.Requirements;
 
 namespace MHLab.Spells.Definitions
 {
-    public interface ISpellDefinition
-    {
-        void SetMetadata(Spell spell);
-
-        void AddRequirements(SpellRequirementContainer container);
-
-        void AddCosts(SpellCostContainer container);
-
-        void AddEffects(SpellEffectContainer container);
-    }
-    
     public class Spell
     {
         public float Cooldown { get; set; }

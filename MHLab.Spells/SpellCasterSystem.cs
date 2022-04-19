@@ -65,6 +65,15 @@ namespace MHLab.Spells
             };
         }
 
+        public SpellCastResult Cast<TDefinition>(ISpellCaster      caster, IEnumerable<ISpellTarget> targets,
+                                                 out SpellInstance spellInstance)
+            where TDefinition : ISpellDefinition
+        {
+            var spell = _context.Spells.Get<TDefinition>();
+
+            return Cast(caster, targets, spell, out spellInstance);
+        }
+
         private void CreateEffectInstances(SpellInstance spellInstance, SpellCastedData spellCastedData)
         {
             var effects = spellInstance.Definition.Effects.Effects;
